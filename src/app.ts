@@ -10,6 +10,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const cors = require("cors");
+app.use(cors());
+
 // routes
 app.use("/api/task", taskRoutes);
 
@@ -22,4 +25,6 @@ db.sync().then(() => {
   console.info("Connected to the database!");
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
